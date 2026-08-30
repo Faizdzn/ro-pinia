@@ -41,6 +41,7 @@ jobs:
         with: 
           token: ${{secrets.GITHUB_TOKEN}}
           github-api-url: "https://api.github.com"
+          allow-external-github-orgs: true
       
       - name: rocale test
         shell: bash
