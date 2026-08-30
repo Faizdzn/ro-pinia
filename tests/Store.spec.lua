@@ -1,8 +1,10 @@
-local pinia = require(script.Parent)
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local pinia = require(ReplicatedStorage.RoPinia)
 local ref = pinia.state.ref
 local computed = pinia.state.computed
 
-local JestGlobals = require(script.Parent.DevPackages.JestGlobals)
+local JestGlobals = require(ReplicatedStorage.RoPinia.DevPackages.JestGlobals)
 local describe = JestGlobals.describe
 local it = JestGlobals.it
 local expect = JestGlobals.expect
@@ -20,8 +22,8 @@ local setupStore = pinia.store.defineStoreSetup("SetupStore", function()
     local helloWorldAct = function()
         print(`Hello {hello}`)
     end
-    local sumWithBase = function(n)
-        angka.value = angka.value * n
+    local sumWithN = function(n)
+        angka.value += n
     end
 
     return {
@@ -29,7 +31,7 @@ local setupStore = pinia.store.defineStoreSetup("SetupStore", function()
         angka = angka,
         multipleAngka = multipleAngka,
         helloWorld = helloWorldAct,
-        sumWithBase = sumWithBase
+        sumWithN = sumWithN
     }
 end)
 
@@ -50,8 +52,8 @@ local optStore = pinia.store.defineStoreOpt("OptStore", {
         helloWorld = function(self)
             print(`Hello {self.hello.value}`)
         end,
-        sumWithBase = function(self, n)
-            self.angka.value = self.angka.value + n
+        sumWithN = function(self, n)
+            self.angka.value += n
         end
     }
 })
@@ -66,7 +68,7 @@ describe("Setup store test", function()
     end)
 
     it("sum angka with n", function()
-        setupStore.sumWithBase(1)
+        setupStore.sumWithN(1)
         expect(setupStore.angka.value).toBe(21)
     end)
 end)
@@ -81,7 +83,7 @@ describe("Option store test", function()
     end)
 
     it("sum angka with n", function()
-        optStore.sumWithBase(1)
+        optStore.sumWithN(1)
         expect(optStore.angka.value).toBe(21)
     end)
 end)

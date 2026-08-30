@@ -3,6 +3,15 @@
   "tree": {
     "$className": "DataModel",
 
+    "ServerScriptService": {
+      "RoPiniaTest": {
+        "$path": "tests"
+      },
+      "$properties": {
+        "LoadStringEnabled": true
+      }
+    },
+
     "ReplicatedStorage": {
       "RoPinia": {
         "$path": "src",

@@ -11,14 +11,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-        # foreman
-        - uses: Roblox/setup-foreman@v3.4.0
-          with: 
-            token: ${{secrets.GITHUB_TOKEN}}
-            github-api-url: "https://api.github.com"
-        
-        # 
-        
-        
+      # foreman
+      - uses: Roblox/setup-foreman@v3.4.0
+        with: 
+          token: ${{secrets.GITHUB_TOKEN}}
+          github-api-url: "https://api.github.com"
+      
+      - name: Download global Roblox types
+        shell: bash
+        run: curl -s -O https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/master/scripts/globalTypes.d.lua
+      
+      - name: Generate sourcemap for LSP
+        shell: bash
+        run: rojo sourcemap default.project.json -o sourcemap.json
+      
+      - name: Analyze
+        shell: bash
+        run: luau-lsp analyze --sourcemap=sourcemap.json --defs=globalTypes.d.lua --defs=testez.d.lua src/
+
+  tests: 
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v4
+      
+      # foreman
+      - uses: Roblox/setup-foreman@v3.4.0
+        with: 
+          token: ${{secrets.GITHUB_TOKEN}}
+          github-api-url: "https://api.github.com"
+      
+      - name: rocale test
+        shell: bash
+        run: "rocale-cli run --apiKey ${{secrets.APIKEY}} -u ${{secrets.UNIVERSE_ID}} -p ${{secrets.PLACE_ID}} --load.project default.project.json --script tests/spec.lua"

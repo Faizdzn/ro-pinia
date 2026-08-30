@@ -1,0 +1,4 @@
+[tools]
+rojo = { github = "rojo-rbx/rojo", version = "7.0.0" }
+luau-lsp = { source = "JohnnyMorganz/luau-lsp", version = "1.69.0" }
+rocale-cli = { source = "Roblox/rocale-cli", version = "0.1.0" }
