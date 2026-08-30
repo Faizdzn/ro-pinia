@@ -3,11 +3,7 @@ local pinia = require(ReplicatedStorage.RoPinia)
 local ref = pinia.state.ref
 local computed = pinia.state.computed
 
-local myNewStore: {
-    hello: typeof(ref("")),
-    testRef: typeof(ref(0)),
-    testComp: typeof(ref(0))
-} = pinia.store.defineStoreSetup("e", function()
+local setupStore = pinia.store.defineStoreSetup("e", function()
     local HelloPinia = ref("Hello RoPinia!")
     local testRef = ref(10)
     local testCompute = computed(function()
@@ -21,7 +17,31 @@ local myNewStore: {
     }
 end)
 
-print(myNewStore)
-print(myNewStore.hello)
-print(myNewStore.testRef)
-print(myNewStore.testComp)
+local optStore = pinia.store.defineStore("es", {
+    state = function()
+        return {
+            hello = "World",
+            angka = 10
+        };
+    end,
+    getters = {
+        multipleAngka = function(state)
+            return state.angka * 2
+        end
+    },
+    actions = {
+        helloWorld = function(self)
+            print(`Hello {self.hello.value}`)
+        end,
+        sumWithBase = function(self, n)
+            return self.angka.value + n
+        end
+    }
+})
+
+print(setupStore)
+-- setupStore.angka.value = 11
+-- print(setupStore.helloWorld())
+-- print(setupStore.sumWithBase(1))
+
+print(optStore)

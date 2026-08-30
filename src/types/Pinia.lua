@@ -1,12 +1,12 @@
-export type defineStoreSetup = <T>(storeId: string, setupFunc: <T>() -> T) -> T
+export type defineStoreSetup = (storeId: string, setupFunc: () -> table) -> table
 export type defineStore = (storeId: string, properties: {
     state: () -> nil,
     getters: {
-        [string]: any
+        [string]: (state: table) -> any
     },
     actions: {
-        [string]: () -> any
+        [string]: (self: table, properties: any | nil) -> any
     }
-}) -> any
+}) -> table
 
 return nil
