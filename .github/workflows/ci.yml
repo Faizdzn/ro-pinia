@@ -1,0 +1,24 @@
+name: CI
+
+on:
+    push:
+        branches: [ "main" ]
+
+    workflow_dispatch:
+
+jobs:
+  analyze_lsp:
+    runs-on: ubuntu-latest
+
+    steps:
+        - uses: actions/checkout@v4
+
+        # foreman
+        - uses: Roblox/setup-foreman@v3.4.0
+          with: 
+            token: ${{secrets.GITHUB_TOKEN}}
+            github-api-url: "https://api.github.com"
+        
+        # 
+        
+        
