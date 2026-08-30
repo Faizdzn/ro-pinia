@@ -3,7 +3,7 @@ local pinia = require(ReplicatedStorage.RoPinia)
 local ref = pinia.state.ref
 local computed = pinia.state.computed
 
-local setupStore = pinia.store.defineStoreSetup("e", function()
+local setupStore = pinia.store.defineStoreSetup("setupStore", function()
     local hello = ref("World")
     local angka = ref(10)
 
@@ -28,7 +28,7 @@ local setupStore = pinia.store.defineStoreSetup("e", function()
     }
 end)
 
-local optStore = pinia.store.defineStoreOpt("es", {
+local optStore = pinia.store.defineStoreOpt("optStore", {
     state = function()
         return {
             hello = "World",
