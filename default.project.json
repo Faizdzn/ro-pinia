@@ -19,14 +19,6 @@
           "$path": "DevPackages"
         }
       }
-    },
-
-    "StarterPlayer": {
-      "StarterPlayerScripts": {
-        "ExamplePinia": {
-          "$path": "example"
-        }
-      }
     }
   }
 }
