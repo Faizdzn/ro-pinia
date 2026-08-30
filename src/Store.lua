@@ -1,7 +1,6 @@
-local PiniaTypes = require(script.Parent.types.Pinia)
 local PiniaState = require(script.Parent.VueState)
 
-local defineStoreOpt: PiniaTypes.defineStore = function(storeId, properties)
+local defineStoreOpt = function(storeId, properties)
     assert(typeof(storeId) == "string", "The storeId types you initiate are not a string!")
     
     local state = properties.state()
@@ -36,7 +35,7 @@ local defineStoreOpt: PiniaTypes.defineStore = function(storeId, properties)
     end
 end
 
-local defineStoreSetup: PiniaTypes.defineStoreSetup = function(storeId, setupFunc)
+local defineStoreSetup = function(storeId, setupFunc)
     assert(typeof(storeId) == "string", "The storeId types you initiate are not a string!")
     assert(typeof(setupFunc) == "function", "The setup function is not a function!")
     

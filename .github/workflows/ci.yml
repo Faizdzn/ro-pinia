@@ -30,7 +30,7 @@ jobs:
       
       - name: Analyze
         shell: bash
-        run: luau-lsp analyze --sourcemap=sourcemap.json --defs=globalTypes.d.lua --defs=testez.d.lua src/
+        run: luau-lsp analyze --sourcemap=sourcemap.json --defs=globalTypes.d.lua --defs=src/types/State.d.lua --defs=src/types/Pinia.d.lua src/
 
   tests: 
     runs-on: ubuntu-latest
