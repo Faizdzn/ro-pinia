@@ -1,0 +1,12 @@
+{
+	"instanceHierarchy": {
+		"tree": {
+			"$className": "Model",
+			"$properties": {
+				"Name": "Roblox/luau-regexp"
+			},
+			"How to use this package": { "$path": "./readme.server.lua" },
+			"$path": "../Packages"
+		}
+	}
+}

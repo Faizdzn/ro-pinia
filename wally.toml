@@ -1,0 +1,11 @@
+[package]
+name = "faiz/ropinia"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]
+
+[dev-dependencies]
+Jest = "roblox/jest@=3.20.0"
+JestGlobals = "roblox/jest-globals@=3.20.0"

@@ -1,0 +1,6 @@
+{
+  "name": "luau-polyfill-number",
+  "tree": {
+    "$path": "src"
+  }
+}

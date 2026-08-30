@@ -1,7 +1,7 @@
 local PiniaTypes = require(script.Parent.types.Pinia)
 local PiniaState = require(script.Parent.VueState)
 
-local defineStore: PiniaTypes.defineStore = function(storeId, properties)
+local defineStoreOpt: PiniaTypes.defineStore = function(storeId, properties)
     assert(typeof(storeId) == "string", "The storeId types you initiate are not a string!")
     
     local state = properties.state()
@@ -12,13 +12,15 @@ local defineStore: PiniaTypes.defineStore = function(storeId, properties)
         local StoreValue = {
             storeId = storeId
         }
+        local StateLinked = {}
         for key, value in state do
             StoreValue[key] = ref(value)
+            StateLinked[key] = StoreValue[key]
         end
 
         for key, value in properties.getters do
             StoreValue[key] = computed(function()
-                return value(state)
+                return value(StateLinked)
             end)
         end
 
@@ -45,6 +47,6 @@ local defineStoreSetup: PiniaTypes.defineStoreSetup = function(storeId, setupFun
 end
 
 return {
-    defineStore = defineStore,
+    defineStoreOpt = defineStoreOpt,
     defineStoreSetup = defineStoreSetup
 }

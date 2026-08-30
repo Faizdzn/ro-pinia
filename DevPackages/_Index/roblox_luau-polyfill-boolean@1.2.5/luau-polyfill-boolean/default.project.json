@@ -1,0 +1,6 @@
+{
+  "name": "luau-polyfill-boolean",
+  "tree": {
+    "$path": "src"
+  }
+}

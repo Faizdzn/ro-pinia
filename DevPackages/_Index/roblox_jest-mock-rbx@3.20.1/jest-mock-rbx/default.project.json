@@ -1,0 +1,6 @@
+{
+  "name": "jest-mock-rbx",
+  "tree": {
+    "$path": "src"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "luau-polyfill-timers",
+  "tree": {
+    "$path": "src"
+  }
+}

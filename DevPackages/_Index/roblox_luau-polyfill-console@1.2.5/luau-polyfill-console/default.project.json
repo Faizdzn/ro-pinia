@@ -1,0 +1,6 @@
+{
+  "name": "luau-polyfill-console",
+  "tree": {
+    "$path": "src"
+  }
+}

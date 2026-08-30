@@ -5,7 +5,10 @@
 
     "ReplicatedStorage": {
       "RoPinia": {
-        "$path": "src"
+        "$path": "src",
+        "DevPackages": {
+          "$path": "DevPackages"
+        }
       }
     },
 
