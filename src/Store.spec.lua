@@ -60,7 +60,7 @@ local optStore = pinia.store.defineStoreOpt("OptStore", {
 describe("Setup store test", function()
     it("multiple angka", function()
         -- check if the computed func success
-        expect(setupStore.multipleAngka).toBe(20)
+        expect(setupStore.multipleAngka.value).toBe(20)
         -- check if the computed func can save the recent value to the state
         expect(setupStore.angka.value).toBe(20)
     end)
@@ -75,7 +75,7 @@ end)
 describe("Option store test", function()
     it("multiple angka", function()
         -- check if the computed func success
-        expect(optStore.multipleAngka).toBe(20)
+        expect(optStore.multipleAngka.value).toBe(20)
         -- check if the computed func can save the recent value to the state
         expect(optStore.angka.value).toBe(20)
     end)
