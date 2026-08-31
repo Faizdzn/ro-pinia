@@ -12,7 +12,6 @@ local computed: VueStateTypes.ComputedRef = function(computedFunc)
         _func = computedFunc
     }
     function ReturnRef:recompute() 
-        print(computedFunc())
         ReturnRef.value = computedFunc()
     end
 

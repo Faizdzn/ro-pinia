@@ -7,7 +7,7 @@ type defineStoreResult = {
     _patch: (patchFunc: (state: StateTypes.Ref<any>) -> nil) -> nil,
     [string]: any
 }
-export type defineStoreSetup = (storeId: string, setupFunc: () -> {any}) -> defineStoreResult
+-- export type defineStoreSetup = (storeId: string, setupFunc: () -> {any}) -> defineStoreResult
 export type defineStoreOpt = (storeId: string, properties: {
     state: () -> nil,
     getters: {
