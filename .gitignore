@@ -12,3 +12,4 @@ DevPackages
 Packages
 
 *.rbxl
+globalTypes.d.lua
