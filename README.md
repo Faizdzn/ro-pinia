@@ -1,6 +1,6 @@
 <img src="images/logo_single.svg" width="125px">
 
-# Pinia
+# RoPinia
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/roblox/react-lua/blob/main/LICENSE)
 [![CI](https://github.com/Faizdzn/ropinia/actions/workflows/ci.yml/badge.svg)](https://github.com/Faizdzn/ropinia/actions/workflows/ci.yml)
 [![Get it on Creator Store](images/link-creator-store.svg)](https://create.roblox.com/store/asset/)
