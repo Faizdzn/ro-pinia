@@ -8,3 +8,5 @@ export type defineStoreOpt = (storeId: string, properties: {
         [string]: (self: {any}, properties: any | nil) -> any
     }
 }) -> {any}
+
+return nil

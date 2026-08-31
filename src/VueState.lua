@@ -1,10 +1,12 @@
-local ref = function (value)
+local VueStateTypes = require(script.Parent.types.State)
+
+local ref: <T>(value: T) -> VueStateTypes.Ref<T> = function (value)
     return {
         value = value
     }
 end
 
-local computed = function(computedFunc)
+local computed: VueStateTypes.ComputedRef = function(computedFunc)
     return {
         value = computedFunc()
     }
