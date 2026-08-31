@@ -1,4 +1,5 @@
 [package]
+authors = ["Faizdzn <faiz@adhi.ski>"]
 name = "faizdzn/ro-pinia"
 description = "A state management like Pinia on Roblox"
 version = "0.1.1"
