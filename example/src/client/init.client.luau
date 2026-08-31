@@ -9,8 +9,7 @@ local setupStore = pinia.store.defineStoreSetup("SetupStore", function()
     local angka = ref(10)
 
     local multipleAngka = computed(function()
-        angka.value = angka.value * 2
-        return angka.value
+        return angka.value * 2
     end)
 
     local helloWorldAct = function()
@@ -38,8 +37,7 @@ local optStore = pinia.store.defineStoreOpt("OptStore", {
     end,
     getters = {
         multipleAngka = function(state)
-            state.angka.value = state.angka.value * 2
-            return state.angka.value
+            return state.angka.value * 2
         end
     },
     actions = {
@@ -54,6 +52,16 @@ local optStore = pinia.store.defineStoreOpt("OptStore", {
 
 print("Setup Store")
 print(setupStore)
+print(setupStore.angka.value)
+print(setupStore.multipleAngka.value)
+setupStore.angka.value = 11
+print(setupStore.angka.value)
+print(setupStore.multipleAngka.value)
 
 print("Opt Store")
 print(optStore)
+print(optStore.angka.value)
+print(optStore.multipleAngka.value)
+optStore.angka.value = 11
+print(optStore.angka.value)
+print(optStore.multipleAngka.value)

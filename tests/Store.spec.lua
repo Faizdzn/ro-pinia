@@ -15,8 +15,7 @@ local setupStore = pinia.store.defineStoreSetup("SetupStore", function()
     local angka = ref(10)
 
     local multipleAngka = computed(function()
-        angka.value = angka.value * 2
-        return angka.value
+        return angka.value * 2
     end)
 
     local helloWorldAct = function()
@@ -44,8 +43,7 @@ local optStore = pinia.store.defineStoreOpt("OptStore", {
     end,
     getters = {
         multipleAngka = function(state)
-            state.angka.value = state.angka.value * 2
-            return state.angka.value
+            return state.angka.value * 2
         end
     },
     actions = {
@@ -63,13 +61,11 @@ describe("Setup store test", function()
     it("multiple angka", function()
         -- check if the computed func success
         expect(setupStore.multipleAngka.value).toBe(20)
-        -- check if the computed func can save the recent value to the state
-        expect(setupStore.angka.value).toBe(20)
     end)
 
     it("sum angka with n", function()
         setupStore.sumWithN(1)
-        expect(setupStore.angka.value).toBe(21)
+        expect(setupStore.angka.value).toBe(11)
     end)
 end)
 
@@ -78,12 +74,10 @@ describe("Option store test", function()
     it("multiple angka", function()
         -- check if the computed func success
         expect(optStore.multipleAngka.value).toBe(20)
-        -- check if the computed func can save the recent value to the state
-        expect(optStore.angka.value).toBe(20)
     end)
 
     it("sum angka with n", function()
         optStore.sumWithN(1)
-        expect(optStore.angka.value).toBe(21)
+        expect(optStore.angka.value).toBe(11)
     end)
 end)
