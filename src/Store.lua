@@ -1,33 +1,50 @@
 local PiniaTypes = require(script.Parent.types.Pinia)
+local StateTypes = require(script.Parent.types.State)
+
 local PiniaState = require(script.Parent.VueState)
+
+local computed = PiniaState.computed
+local ref = PiniaState.ref
 
 local defineStoreOpt: PiniaTypes.defineStoreOpt = function(storeId, properties)
     assert(typeof(storeId) == "string", "The storeId types you initiate are not a string!")
     
     local state = properties.state()
     if state ~= nil then
-        local computed = PiniaState.computed
-        local ref = PiniaState.ref
-
         local StoreValue = {
             storeId = storeId
         }
+
         local StateLinked = {}
         for key, value in state do
             StoreValue[key] = ref(value)
             StateLinked[key] = StoreValue[key]
         end
 
+        local ComputedLinked = {}
         for key, value in properties.getters do
             StoreValue[key] = computed(function()
                 return value(StateLinked)
             end)
+            ComputedLinked[key] = StoreValue[key]
         end
 
         for key, value in properties.actions do
             StoreValue[key] = function(props: any | nil)
                 return value(StoreValue, props)
             end
+        end
+
+        StoreValue._state = StateLinked
+        StoreValue._computed = ComputedLinked
+        StoreValue._reset = function()
+            for key, value in state do
+                StoreValue[key] = ref(value)
+                StateLinked[key] = StoreValue[key]
+            end
+        end
+        StoreValue._patch = function(patchFunc: (state: {[string]: StateTypes.Ref<any>}) -> nil)
+            patchFunc(StateLinked)
         end
 
         return StoreValue
@@ -40,10 +57,46 @@ local defineStoreSetup: PiniaTypes.defineStoreSetup = function(storeId, setupFun
     assert(typeof(storeId) == "string", "The storeId types you initiate are not a string!")
     assert(typeof(setupFunc) == "function", "The setup function is not a function!")
     
-    local ValueTable = setupFunc()
-    ValueTable["storeId"] = storeId
+    local SetupRet = setupFunc()
+    local StoreValue = {
+        storeId = storeId
+    }
 
-    return ValueTable
+    local StateBase = {}
+    local StateLinked = {}
+    local ComputedLinked = {}
+
+    for key, value in SetupRet do
+        if typeof(value) == "function" then
+            -- action
+            StoreValue[key] = function(props: any | nil)
+                return value(StoreValue, props)
+            end
+        elseif value.recompute ~= nil then
+            -- computed
+            StoreValue[key] = value
+            ComputedLinked[key] = StoreValue[key]
+        else
+            -- ref
+            StateBase[key] = value
+            StoreValue[key] = ref(value.value)
+            StateLinked[key] = StoreValue[key]
+        end
+    end
+
+    StoreValue._state = StateLinked
+    StoreValue._computed = ComputedLinked
+    StoreValue._reset = function()
+        for key, value in StateBase do
+            StoreValue[key] = ref(value.value)
+            StateLinked[key] = StoreValue[key]
+        end
+    end
+    StoreValue._patch = function(patchFunc: (state: {[string]: StateTypes.Ref<any>}) -> nil)
+        patchFunc(StateLinked)
+    end
+
+    return StoreValue
 end
 
 return {

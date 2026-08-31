@@ -67,6 +67,24 @@ describe("Setup store test", function()
         setupStore.sumWithN(1)
         expect(setupStore.angka.value).toBe(11)
     end)
+
+    it("testing get _state", function()
+        expect(setupStore._state.angka.value).toBe(10)
+    end)
+
+    it("testing _reset store", function()
+        setupStore.angka.value += 10
+        expect(setupStore.angka.value).toBe(20)
+        setupStore._reset()
+        expect(setupStore.angka.value).toBe(10)
+    end)
+
+    it("testing _patch store", function()
+        setupStore._patch(function(state)
+            state.angka.value = 20
+        end)
+        expect(setupStore.angka.value).toBe(20)
+    end)
 end)
 
 -- optStore test
