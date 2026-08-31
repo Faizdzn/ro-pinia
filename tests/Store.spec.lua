@@ -65,7 +65,9 @@ describe("Setup store test", function()
 
     it("sum angka with n", function()
         setupStore.sumWithN(1)
+        print(setupStore.angka.value)
         expect(setupStore.angka.value).toBe(11)
+        setupStore._reset()
     end)
 
     it("testing get _state", function()
