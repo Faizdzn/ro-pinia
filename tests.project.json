@@ -1,0 +1,24 @@
+{
+  "name": "ropinia_test",
+  "tree": {
+    "$className": "DataModel",
+
+    "ServerScriptService": {
+      "RoPiniaTest": {
+        "$path": "tests"
+      },
+      "$properties": {
+        "LoadStringEnabled": true
+      }
+    },
+
+    "ReplicatedStorage": {
+      "RoPinia": {
+        "$path": "src",
+        "DevPackages": {
+          "$path": "DevPackages"
+        }
+      }
+    }
+  }
+}

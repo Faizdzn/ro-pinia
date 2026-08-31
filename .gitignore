@@ -14,7 +14,7 @@ DevPackages
 Packages
 
 # ignore output rojo build
-*.rbxl
+build
 
 # ignore global types
 globalTypes.d.lua

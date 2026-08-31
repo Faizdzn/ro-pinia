@@ -30,7 +30,7 @@ jobs:
 
       - name: Generate sourcemap for LSP
         shell: bash
-        run: rojo sourcemap default.project.json -o sourcemap.json
+        run: rojo sourcemap tests.project.json -o sourcemap.json
       
       - name: Analyze
         shell: bash
@@ -55,4 +55,4 @@ jobs:
       
       - name: rocale test
         shell: bash
-        run: "rocale-cli run --apiKey ${{secrets.APIKEY}} -u ${{secrets.UNIVERSE_ID}} -p ${{secrets.PLACE_ID}} --load.project default.project.json --script tests/spec.lua"
+        run: "rocale-cli run --apiKey ${{secrets.APIKEY}} -u ${{secrets.UNIVERSE_ID}} -p ${{secrets.PLACE_ID}} --load.project tests.project.json --script tests/spec.lua"
