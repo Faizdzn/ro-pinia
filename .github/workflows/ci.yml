@@ -38,6 +38,7 @@ jobs:
 
   tests: 
     runs-on: ubuntu-latest
+    needs: [ analyze_lsp ]
     steps: 
       - uses: actions/checkout@v4
       
