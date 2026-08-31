@@ -3,8 +3,8 @@
 # RoPinia
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/roblox/react-lua/blob/main/LICENSE)
 [![CI](https://github.com/Faizdzn/ropinia/actions/workflows/ci.yml/badge.svg)](https://github.com/Faizdzn/ropinia/actions/workflows/ci.yml)
-[![Get it on Creator Store](images/link-creator-store.svg)](https://create.roblox.com/store/asset/)
-[![Wally (external link)](images/link-wally.svg)](https://wally.run/package/faizdzn/ropinia)
+[![Get it on Creator Store](images/link-creator-store.svg)](https://create.roblox.com/store/asset/139280151381062)
+[![Wally (external link)](images/link-wally.svg)](https://wally.run/package/faizdzn/ro-pinia)
 
 A Pinia state management library ported into Roblox, bringing the simplicity and developer experience of Pinia to Roblox. If you're already familiar with Pinia, this library provides a familiar approach to creating stores, managing reactive state, and organizing application logic.
 
