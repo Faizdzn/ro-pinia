@@ -9,7 +9,7 @@
 A Pinia state management library ported into Roblox, bringing the simplicity and developer experience of Pinia to Roblox. If you're already familiar with Pinia, this library provides a familiar approach to creating stores, managing reactive state, and organizing application logic while being designed around Luau's type system and runtime.
 
 ## Example Usage
-`init.client.lua:`
+`init.client.luau:`
 ```lua
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local pinia = require(ReplicatedStorage.RoPinia)
