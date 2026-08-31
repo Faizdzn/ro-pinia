@@ -7,9 +7,14 @@ local ref: <T>(value: T) -> VueStateTypes.Ref<T> = function (value)
 end
 
 local computed: VueStateTypes.ComputedRef = function(computedFunc)
-    return {
+    local ReturnRef = {
         value = computedFunc()
     }
+    function ReturnRef:recompute() 
+        ReturnRef.value = computedFunc()
+    end
+
+    return ReturnRef
 end
 
 return {
