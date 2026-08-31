@@ -52,8 +52,8 @@ print(myStore.multipleAngka.value)
 Check our official examples in [./example](https://github.com/Faizdzn/ropinia/tree/main/example) (Rojo)
 
 ## Contributors
-<a href="https://github.com/Faizdzn/ropinia/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Faizdzn/ropinia" />
+<a href="https://github.com/Faizdzn/ro-pinia/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Faizdzn/ro-pinia" />
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
