@@ -48,6 +48,10 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
           github-api-url: "https://api.github.com"
           allow-external-github-orgs: true
+
+      - name: Install all dependency
+        shell: bash
+        run: wally install
       
       - name: rocale test
         shell: bash
