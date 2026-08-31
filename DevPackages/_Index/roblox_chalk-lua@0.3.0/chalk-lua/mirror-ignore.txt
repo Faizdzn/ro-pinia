@@ -1,4 +1,0 @@
-regex:^\.github/(?!assets/)
-glob:.vscode/*
-mirror-ignore.txt
-multipack.toml

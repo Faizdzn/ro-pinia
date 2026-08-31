@@ -1,3 +1,0 @@
-regex:^\.github/(?!assets/)
-mirror-ignore.txt
-CONTRIBUTING.md

@@ -8,3 +8,7 @@
 sourcemap.json
 
 wally.lock
+DevPackages
+Packages
+
+*.rbxl
