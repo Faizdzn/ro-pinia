@@ -10,13 +10,13 @@ local setupStore = pinia.store.defineStoreSetup("SetupStore", function()
 
     local multipleAngka = computed(function()
         return angka.value * 2
-    end)
+    end, true)
 
-    local helloWorldAct = function()
-        print(`Hello {hello}`)
+    local helloWorldAct = function(self)
+        print(`Hello {self.hello.value}`)
     end
-    local sumWithN = function(n)
-        angka.value += n
+    local sumWithN = function(self, n)
+        self.angka.value += n
     end
 
     return {
@@ -55,7 +55,8 @@ print(setupStore)
 print(setupStore.angka.value)
 print(setupStore.multipleAngka.value)
 
-setupStore.angka.value = 11
+-- setupStore.angka.value = 11
+setupStore.sumWithN(1)
 setupStore.multipleAngka:recompute()
 print(setupStore.angka.value)
 print(setupStore.multipleAngka.value)
@@ -65,7 +66,8 @@ print(optStore)
 print(optStore.angka.value)
 print(optStore.multipleAngka.value)
 
-optStore.angka.value = 11
+-- optStore.angka.value = 11
+optStore.sumWithN(1)
 optStore.multipleAngka:recompute()
 print(optStore.angka.value)
 print(optStore.multipleAngka.value)

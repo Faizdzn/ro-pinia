@@ -21,8 +21,8 @@ local setupStore = pinia.store.defineStoreSetup("SetupStore", function()
     local helloWorldAct = function()
         print(`Hello {hello}`)
     end
-    local sumWithN = function(n)
-        angka.value += n
+    local sumWithN = function(self, n)
+        self.angka.value += n
     end
 
     return {
@@ -65,7 +65,6 @@ describe("Setup store test", function()
 
     it("sum angka with n", function()
         setupStore.sumWithN(1)
-        print(setupStore.angka.value)
         expect(setupStore.angka.value).toBe(11)
         setupStore._reset()
     end)

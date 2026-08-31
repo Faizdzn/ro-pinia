@@ -1,5 +1,5 @@
 # Project place file
-/ropinia.rbxlx
+ropinia.rbxlx
 
 # Roblox Studio lock files
 /*.rbxlx.lock
@@ -15,6 +15,7 @@ Packages
 
 # ignore output rojo build
 build
+*.rbxl
 
 # ignore global types
 globalTypes.d.lua

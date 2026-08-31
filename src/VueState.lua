@@ -8,9 +8,11 @@ end
 
 local computed: VueStateTypes.ComputedRef = function(computedFunc)
     local ReturnRef = {
-        value = computedFunc()
+        value = computedFunc(),
+        _func = computedFunc
     }
     function ReturnRef:recompute() 
+        print(computedFunc())
         ReturnRef.value = computedFunc()
     end
 

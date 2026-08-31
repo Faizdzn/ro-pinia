@@ -6,7 +6,7 @@
 [![Get it on Creator Store](images/link-creator-store.svg)](https://create.roblox.com/store/asset/)
 [![Wally (external link)](images/link-wally.svg)](https://wally.run/package/faizdzn/ropinia)
 
-A Pinia state management library ported into Roblox, bringing the simplicity and developer experience of Pinia to Roblox. If you're already familiar with Pinia, this library provides a familiar approach to creating stores, managing reactive state, and organizing application logic while being designed around Luau's type system and runtime.
+A Pinia state management library ported into Roblox, bringing the simplicity and developer experience of Pinia to Roblox. If you're already familiar with Pinia, this library provides a familiar approach to creating stores, managing reactive state, and organizing application logic.
 
 ## Example Usage
 `init.client.luau:`
@@ -28,8 +28,8 @@ local setupStore = pinia.store.defineStoreSetup("SetupStore", function()
     local helloWorldAct = function()
         print(`Hello {hello}`)
     end
-    local sumWithN = function(n)
-        angka.value += n
+    local sumWithN = function(self, n)
+        self.angka.value += n
     end
 
     return {
