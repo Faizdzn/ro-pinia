@@ -36,7 +36,7 @@ local defineStore: PiniaTypes.defineStoreOpt = function(storeId, properties)
         end
 
         StoreValue._state = StateLinked
-        StoreValue._computed = ComputedLinked
+        StoreValue._getters = ComputedLinked
         StoreValue._reset = function()
             for key, value in state do
                 StoreValue[key] = ref(value)
@@ -85,7 +85,7 @@ end
 --     end
 
 --     StoreValue._state = StateLinked
---     StoreValue._computed = ComputedLinked
+--     StoreValue._getters = ComputedLinked
 --     StoreValue._reset = function()
 --         for key, value in StateBase do
 --             StoreValue[key] = ref(value.value)
