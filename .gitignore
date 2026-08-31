@@ -5,11 +5,16 @@
 /*.rbxlx.lock
 /*.rbxl.lock
 
+# rojo sourcemap
 sourcemap.json
 
+# wally
 wally.lock
 DevPackages
 Packages
 
+# ignore output rojo build
 *.rbxl
+
+# ignore global types
 globalTypes.d.lua
