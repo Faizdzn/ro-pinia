@@ -1,8 +1,11 @@
 [package]
-name = "faizdzn/ropinia"
+name = "faizdzn/ro-pinia"
+description = "A state management like Pinia on Roblox"
 version = "0.1.1"
-registry = "https://github.com/UpliftGames/wally-index"
+license = "MIT"
 realm = "shared"
+repository = "https://github.com/Faizdzn/ro-pinia"
+registry = "https://github.com/UpliftGames/wally-index"
 
 [dependencies]
 
