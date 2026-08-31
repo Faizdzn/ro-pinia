@@ -54,6 +54,7 @@ print("Setup Store")
 print(setupStore)
 print(setupStore.angka.value)
 print(setupStore.multipleAngka.value)
+
 setupStore.angka.value = 11
 setupStore.multipleAngka:recompute()
 print(setupStore.angka.value)
@@ -63,6 +64,7 @@ print("Opt Store")
 print(optStore)
 print(optStore.angka.value)
 print(optStore.multipleAngka.value)
+
 optStore.angka.value = 11
 optStore.multipleAngka:recompute()
 print(optStore.angka.value)
