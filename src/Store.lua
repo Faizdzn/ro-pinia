@@ -1,6 +1,7 @@
 local PiniaTypes = require(script.Parent.types.Pinia)
 local StateTypes = require(script.Parent.types.State)
 
+local Signal = require(script.Parent.Packages.Signal)
 local PiniaState = require(script.Parent.VueState)
 
 local computed = PiniaState.computed
@@ -14,6 +15,7 @@ local defineStore: PiniaTypes.defineStoreOpt = function(storeId, properties)
         local StoreValue = {
             storeId = storeId
         }
+        local subcribeSignal = Signal.new()
 
         local StateLinked = {}
         for key, value in state do
@@ -45,6 +47,13 @@ local defineStore: PiniaTypes.defineStoreOpt = function(storeId, properties)
         end
         StoreValue._patch = function(patchFunc: (state: {[string]: StateTypes.Ref<any>}) -> nil)
             patchFunc(StateLinked)
+
+            subcribeSignal:Fire({
+                storeId = StoreValue.storeId
+            }, StateLinked)
+        end
+        StoreValue._subcribe = function(subcribeFunc: (mutate: PiniaTypes.MutateTable, state: {[string]: StateTypes.Ref<any>}) -> nil)
+            subcribeSignal:Connect(subcribeFunc)
         end
 
         return StoreValue

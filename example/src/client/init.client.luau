@@ -33,3 +33,24 @@ myStore.sumWithN(1)
 myStore.multipleAngka:recompute()
 print(myStore.angka.value)
 print(myStore.multipleAngka.value)
+
+-- ===
+
+local ref = pinia.state.ref
+local computed = pinia.state.computed
+local watch = pinia.state.watch
+
+-- example of states
+local angka = ref(10)
+local tambahSatu = computed(function()
+    return angka.value + 1
+end)
+
+watch(angka, function(_, newVal)
+    print(newVal)
+end)
+
+print(angka.value)
+print(tambahSatu.value)
+
+angka.value = 12

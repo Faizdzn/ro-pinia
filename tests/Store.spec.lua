@@ -117,5 +117,16 @@ describe("Setup store test", function()
             state.angka.value = 20
         end)
         expect(myStore.angka.value).toBe(20)
+        myStore._reset()
+    end)
+
+    it("testing _subcribe store", function()
+        myStore._subcribe(function(mutate, state)
+            expect(state.angka.value).toBe(11)
+        end)
+        myStore._patch(function(state)
+            state.angka.value = 11
+        end)
+        myStore._reset()
     end)
 end)
