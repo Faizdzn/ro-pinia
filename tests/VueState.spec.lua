@@ -33,9 +33,13 @@ end)
 -- watch test
 describe("watch angka", function()
     it("watch for changes", function()
+        local newValue = nil
         watch(angka, function(_, newVal)
-            expect(newVal).toBe(12)
+            newValue = newVal
         end)
         angka.value = 12
+        
+        task.wait(1)
+        expect(newValue).toBe(12)
     end)
 end)
